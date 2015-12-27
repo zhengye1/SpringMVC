@@ -24,12 +24,58 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Employee> listEmployee() {
-		Session session = sessionFactory.openSession();
+		Session session = this.sessionFactory.openSession();
 		String hql = "FROM Employee";
 		Query query = session.createQuery(hql);
 		List<Employee> empList = query.list();
 		logger.info("Person List: " + empList);
+		session.close();
 		return empList;
+	}
+
+
+	@Override
+	public void insertEmployee(Employee employee) {
+		Session session = this.sessionFactory.openSession();
+		session.beginTransaction();
+		session.save(employee);
+		session.getTransaction().commit();
+		logger.info("New Employee is saved successfully with employee details: " + employee);
+		session.close();
+	}
+
+
+	@Override
+	public void updateEmployee(Employee employee) {
+		Session session = this.sessionFactory.openSession();
+		session.beginTransaction();
+		session.update(employee);
+		session.getTransaction().commit();
+		logger.info("Employee updated sucessfully with employee details: " + employee);
+		session.close();
+	}
+
+
+	@Override
+	public Employee getEmployeeByI(int id) {
+		Session session = this.sessionFactory.openSession();
+		Employee employee = (Employee) session.load(Employee.class, new Integer(id));
+		logger.info("Employee loaded successfully with employee details: " + employee);
+		session.close();
+		return employee;
+	}
+
+
+	@Override
+	public void removeEmployee(Integer employeeId) {
+		System.out.println("hql using Delete");
+		Session session = this.sessionFactory.openSession();
+		String hql = "DELETE from Employee E WHERE E.id = :employee_id";
+		Query query = session.createQuery(hql);
+		query.setParameter("employee_id", employeeId);
+		int result = query.executeUpdate();
+		logger.info("Employee was deleted, row affected: " + result);
+		
 	}
 
 }

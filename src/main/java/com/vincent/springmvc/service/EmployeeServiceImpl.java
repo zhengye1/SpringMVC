@@ -20,4 +20,28 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return this.employeeDao.listEmployee();
 	}
 
+	@Override
+	public void insertEmployee(Employee employee) {
+		this.employeeDao.insertEmployee(employee);
+		
+	}
+
+	@Override
+	public void updateEmployee(Employee employee) {
+		this.employeeDao.updateEmployee(employee);
+		
+	}
+
+	@Override
+	public Employee getEmployeeById(int id) {
+		// TODO Auto-generated method stub
+		return this.employeeDao.getEmployeeByI(id);
+	}
+
+	@Override
+	public void deleteEmployee(Integer employeeId) {
+		this.employeeDao.removeEmployee(employeeId);
+		
+	}
+
 }

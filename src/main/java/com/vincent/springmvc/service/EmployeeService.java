@@ -6,4 +6,9 @@ import com.vincent.springmvc.model.Employee;
 
 public interface EmployeeService {
 	public List<Employee> listEmployee();
+
+	public void insertEmployee(Employee employee);
+	public void updateEmployee(Employee employee);
+	public Employee getEmployeeById(int id);
+	public void deleteEmployee(Integer employeeId);
 }
