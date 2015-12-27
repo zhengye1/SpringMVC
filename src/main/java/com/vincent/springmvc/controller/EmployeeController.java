@@ -1,5 +1,7 @@
 package com.vincent.springmvc.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,6 +18,8 @@ import com.vincent.springmvc.service.EmployeeService;
 @RequestMapping("/employee")
 public class EmployeeController {
 
+	//Logger file
+	private static Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 	@Autowired
 	private EmployeeService employeeService;
 
@@ -39,6 +43,7 @@ public class EmployeeController {
 
 	@RequestMapping(value = "/updateEmployee", method = RequestMethod.POST)
 	public String updateEmployee(@ModelAttribute("employeeForm") Employee employee, ModelMap model){
+		logger.error("Employee id: " + employee.getId());
 		this.employeeService.insertEmployee(employee);
 		model.addAttribute("employeesList", this.employeeService.listEmployee());
 		return "employee";
@@ -49,5 +54,11 @@ public class EmployeeController {
 		this.employeeService.deleteEmployee(empId);
 		model.addAttribute("employeesList", this.employeeService.listEmployee());
 		return "employee";
+	}
+	@RequestMapping(value = "/edit/{empId}", method=RequestMethod.GET)
+	public String editEmployee(@PathVariable("empId") int id, ModelMap model){
+		model.addAttribute("addEmployee", this.employeeService.getEmployeeById(id));
+		//model.addAttribute("employeesList", this.employeeService.listEmployee());
+		return "addEmployee";
 	}
 }

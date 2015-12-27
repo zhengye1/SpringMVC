@@ -26,7 +26,7 @@
 				<td>
 					<table cellspacing="0" cellpadding="6" border="1" width="100%">
 						<tr>
-							<td colspan="7"
+							<td colspan="8"
 								style="background-color: lightblue; color: darkgreen; font-size: 16pt"
 								align="center">Employee List</td>
 						</tr>
@@ -37,6 +37,7 @@
 							<th>Job Title</th>
 							<th>Department</th>
 							<th>Salary</th>
+							<th>Edit</th>
 							<th>Delete</th>
 						</tr>
 						<c:forEach var="employee" items="${employeesList}"
@@ -48,6 +49,8 @@
 								<td>${employee.jobTitle}</td>
 								<td>${employee.department}</td>
 								<td>${employee.salary}</td>
+								<td><a
+									href="${pageContext.request.contextPath}/employee/edit/${employee.id}">Edit</a></td>
 								<td><a
 									href="${pageContext.request.contextPath}/employee/delete/${employee.id}">Delete</a></td>
 							</tr>
