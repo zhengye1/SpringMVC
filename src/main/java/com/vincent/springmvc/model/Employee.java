@@ -10,6 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "EMPLOYEE_INFO")
 public class Employee {
+	
 	@Id
 	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,17 +30,6 @@ public class Employee {
 	
 	@Column(name = "SALARY")
 	private int salary;
-	
-	
-	public Employee(Integer id, String firstName, String lastName, String jobTitle, String department, int salary) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.jobTitle = jobTitle;
-		this.department = department;
-		this.salary = salary;
-	}
 
 	public Integer getId() {
 		return id;

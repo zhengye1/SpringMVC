@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.vincent.springmvc.dao.EmployeeDao;
 import com.vincent.springmvc.model.Employee;
 
-@Service("employeeService")
+@Service
 public class EmployeeServiceImpl implements EmployeeService {
 	
 	@Autowired
@@ -17,7 +17,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public List<Employee> listEmployee() {
 		// TODO Auto-generated method stub
-		return employeeDao.listEmployee();
+		return this.employeeDao.listEmployee();
 	}
 
 }

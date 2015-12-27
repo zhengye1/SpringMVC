@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.vincent.springmvc.model.Employee;
 
-@Repository("employeeDao")
+@Repository
 public class EmployeeDaoImpl implements EmployeeDao {
 	
 	private static Logger logger = LoggerFactory.getLogger(EmployeeDaoImpl.class);

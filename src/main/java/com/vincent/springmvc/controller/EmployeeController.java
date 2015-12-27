@@ -8,11 +8,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.vincent.springmvc.service.EmployeeService;
 
-@Controller("employeeController")
+@Controller
 @RequestMapping("/employee")
 public class EmployeeController {
-	
-	
+		
 	@Autowired
 	private EmployeeService employeeService;
 	
@@ -23,7 +22,7 @@ public class EmployeeController {
 		return "hello";
 	}
 	
-	@RequestMapping(value = "/listemployee", method = RequestMethod.GET)
+	@RequestMapping(value = "/listEmployees", method = RequestMethod.GET)
 	public String listEmployees(ModelMap model){
 		model.addAttribute("employeesList", employeeService.listEmployee());
 		return "employee";
