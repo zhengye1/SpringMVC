@@ -5,6 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.vincent.springmvc.model.Employee;
 import com.vincent.springmvc.service.EmployeeService;
 
 @Controller
@@ -27,4 +30,8 @@ public class EmployeeController {
 		return "employee";
 	}
 	
+	@RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
+	public ModelAndView addEmployee(ModelMap model){
+		return new ModelAndView("addEmployee", "command", new Employee());
+	}
 }
