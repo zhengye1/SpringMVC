@@ -42,9 +42,11 @@ public class EmployeeController {
 	}
 
 	@RequestMapping(value = "/updateEmployee", method = RequestMethod.POST)
-	public String updateEmployee(@ModelAttribute("employeeForm") Employee employee, ModelMap model){
-		logger.error("Employee id: " + employee.getId());
-		this.employeeService.insertEmployee(employee);
+	public String updateEmployee(@ModelAttribute("employee") Employee employee, ModelMap model){
+		if(employee.getId() == 0)
+			this.employeeService.insertEmployee(employee);
+		else
+			this.employeeService.updateEmployee(employee);
 		model.addAttribute("employeesList", this.employeeService.listEmployee());
 		return "employee";
 	}
@@ -56,9 +58,7 @@ public class EmployeeController {
 		return "employee";
 	}
 	@RequestMapping(value = "/edit/{empId}", method=RequestMethod.GET)
-	public String editEmployee(@PathVariable("empId") int id, ModelMap model){
-		model.addAttribute("addEmployee", this.employeeService.getEmployeeById(id));
-		//model.addAttribute("employeesList", this.employeeService.listEmployee());
-		return "addEmployee";
+	public ModelAndView editEmployee(@PathVariable("empId") int id, ModelMap model){
+		return new ModelAndView("addEmployee", "command", this.employeeService.getEmployeeById(id));
 	}
 }
