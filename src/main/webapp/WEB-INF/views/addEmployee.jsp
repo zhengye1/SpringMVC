@@ -29,7 +29,7 @@
 				<td><form:form method="POST" action="updateEmployee"
 						modelAttribute="employee">
 						<table width="100%">
-							<form:hidden path="id" value="0" />
+							<form:hidden path="id" />
 							<tr>
 								<td><form:label path="firstName">First Name</form:label></td>
 								<td align="left" width="70%"><form:input path="firstName" /></td>

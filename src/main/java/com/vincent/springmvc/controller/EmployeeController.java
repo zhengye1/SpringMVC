@@ -45,12 +45,14 @@ public class EmployeeController {
 	@RequestMapping(value = "/edit/{empId}", method=RequestMethod.GET)
 	public String editEmployee(@PathVariable("empId") int id, ModelMap model){
 		model.addAttribute("employee", this.employeeService.getEmployeeById(id));
+		logger.info("Employee controllre:48 " + model);
 		return "addEmployee";
 	}
 	
-	@RequestMapping(value = "/updateEmployee", method = RequestMethod.POST)
+	@RequestMapping(value = {"/updateEmployee", "/edit/updateEmployee"}, method = RequestMethod.POST)
 	public String updateEmployee(@ModelAttribute("employee") Employee employee,  ModelMap model){
-		if(employee.getId() == 0)
+		logger.info("What happen in here??" + model);
+		if(employee.getId() == null)
 			this.employeeService.insertEmployee(employee);
 		else
 			this.employeeService.updateEmployee(employee);
