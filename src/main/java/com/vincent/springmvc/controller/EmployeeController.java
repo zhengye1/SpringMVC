@@ -57,14 +57,14 @@ public class EmployeeController {
 		else
 			this.employeeService.updateEmployee(employee);
 		model.addAttribute("employeesList", this.employeeService.listEmployee());
-		return "employee";
+		return "redirect:/employee/listEmployees";
 	}
 	
 	@RequestMapping(value = "/delete/{empId}", method = RequestMethod.GET)
 	public String deleteEmployee(@PathVariable("empId") Integer empId, ModelMap model){
 		this.employeeService.deleteEmployee(empId);
 		model.addAttribute("employeesList", this.employeeService.listEmployee());
-		return "employee";
+		return "redirect:/employee/listEmployees";
 	}
 
 }
