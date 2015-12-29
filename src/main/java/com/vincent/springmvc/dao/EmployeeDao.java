@@ -10,4 +10,5 @@ public interface EmployeeDao {
 	public Employee getEmployeeByI(int id);
 	public List<Employee> listEmployee();
 	public void removeEmployee(Integer employeeId);
+	public void insertOrUpdate(Employee employee);
 }

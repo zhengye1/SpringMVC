@@ -37,6 +37,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Override
 	public void insertEmployee(Employee employee) {
 		Session session = this.sessionFactory.openSession();
+		logger.info("Employee before: " + employee);
 		session.beginTransaction();
 		session.save(employee);
 		session.getTransaction().commit();
@@ -48,6 +49,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Override
 	public void updateEmployee(Employee employee) {
 		Session session = this.sessionFactory.openSession();
+		logger.info("Employee before: " + employee);
 		session.beginTransaction();
 		session.update(employee);
 		session.getTransaction().commit();
@@ -76,6 +78,15 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		int result = query.executeUpdate();
 		logger.info("Employee was deleted, row affected: " + result);
 		
+	}
+
+
+	@Override
+	public void insertOrUpdate(Employee employee) {
+		if (employee.getId()==0)
+			this.insertEmployee(employee);
+		else
+			this.updateEmployee(employee);		
 	}
 
 }

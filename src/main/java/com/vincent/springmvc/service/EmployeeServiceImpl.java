@@ -44,4 +44,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 	}
 
+	@Override
+	public void insertOrUpdate(Employee employee) {
+		this.employeeDao.insertOrUpdate(employee);
+		
+	}
+
 }

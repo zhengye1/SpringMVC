@@ -37,12 +37,19 @@ public class EmployeeController {
 	}
 
 	@RequestMapping(value = "/addEmployee", method = RequestMethod.GET)
-	public ModelAndView addEmployee(ModelMap model){
-		return new ModelAndView("addEmployee", "command", new Employee());
+	public String addEmployee(ModelMap model){
+		model.addAttribute("employee", new Employee());
+		return "addEmployee";
 	}
-
+	
+	@RequestMapping(value = "/edit/{empId}", method=RequestMethod.GET)
+	public String editEmployee(@PathVariable("empId") int id, ModelMap model){
+		model.addAttribute("employee", this.employeeService.getEmployeeById(id));
+		return "addEmployee";
+	}
+	
 	@RequestMapping(value = "/updateEmployee", method = RequestMethod.POST)
-	public String updateEmployee(@ModelAttribute("employee") Employee employee, ModelMap model){
+	public String updateEmployee(@ModelAttribute("employee") Employee employee,  ModelMap model){
 		if(employee.getId() == 0)
 			this.employeeService.insertEmployee(employee);
 		else
@@ -57,8 +64,5 @@ public class EmployeeController {
 		model.addAttribute("employeesList", this.employeeService.listEmployee());
 		return "employee";
 	}
-	@RequestMapping(value = "/edit/{empId}", method=RequestMethod.GET)
-	public ModelAndView editEmployee(@PathVariable("empId") int id, ModelMap model){
-		return new ModelAndView("addEmployee", "command", this.employeeService.getEmployeeById(id));
-	}
+
 }

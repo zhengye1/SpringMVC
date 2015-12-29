@@ -9,11 +9,14 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
 
+	<!--  Activates various annotaions to be detected in bean class -->
 	<context:annotation-config />
 	<context:component-scan base-package="com.vincent.springmvc.service" />
 	<context:component-scan base-package="com.vincent.springmvc.dao" />
 	<context:component-scan base-package="com.vincent.springmvc.controller" />
 	<context:property-placeholder location="/WEB-INF/hibernate.properties" />
+	
+	<mvc:annotation-driven />
 
 	<!-- DataSource -->
 	<bean id="dataSource"
