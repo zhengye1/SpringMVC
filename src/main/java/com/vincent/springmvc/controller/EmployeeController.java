@@ -22,13 +22,6 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeService;
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String welcomeEmployee(ModelMap model){
-		model.addAttribute("name", "Hello World!");
-		model.addAttribute("greetings", "Welcome to Spring MVC");
-		return "hello";
-	}
-
 	@RequestMapping(value = "/listEmployees", method = RequestMethod.GET)
 	public String listEmployees(ModelMap model){
 		model.addAttribute("employeesList", this.employeeService.listEmployee());
@@ -50,7 +43,6 @@ public class EmployeeController {
 	
 	@RequestMapping(value = {"/updateEmployee", "/edit/updateEmployee"}, method = RequestMethod.POST)
 	public String updateEmployee(@ModelAttribute("employee") Employee employee,  ModelMap model){
-		logger.info("What happen in here??" + model);
 		if(employee.getId() == null)
 			this.employeeService.insertEmployee(employee);
 		else
