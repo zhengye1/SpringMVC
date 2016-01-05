@@ -16,7 +16,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	@Override
 	public List<Employee> listEmployee() {
-		// TODO Auto-generated method stub
 		return this.employeeDao.listEmployee();
 	}
 
@@ -34,7 +33,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public Employee getEmployeeById(int id) {
-		// TODO Auto-generated method stub
 		return this.employeeDao.getEmployeeByI(id);
 	}
 

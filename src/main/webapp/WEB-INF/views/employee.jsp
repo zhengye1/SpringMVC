@@ -19,6 +19,9 @@
 							<td align="left"><a
 								href="${pageContext.request.contextPath}/employee/addEmployee"
 								style="background-color: lightblue;"> Add Employee </a></td>
+							<td align="right"><a
+								href="${pageContext.request.contextPath}/logoutPage"
+								style="background-color: lightblue;">Logout</a>
 					</table>
 				</td>
 			</tr>

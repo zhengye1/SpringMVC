@@ -8,12 +8,12 @@
 
 
 	<http auto-config="true">
-		<intercept-url pattern="/employee/*" access="ROLE_ADMIN" />
+		<intercept-url pattern="/employee/*" access="hasRole('ADMIN')" />
 		<form-login login-processing-url="/login" login-page="/loginPage"
 			username-parameter="username" password-parameter="password"
-			default-target-url="/employee/listemployee"
+			default-target-url="/employee/listEmployees"
 			authentication-failure-url="/loginPage?auth=fail" />
-		<logout logout-url="/logout" logout-success-url="/logoutPage" />
+		<logout logout-url="/logout" logout-success-url="/logoutPage" delete-cookies="JSESSIONID"/>
 	</http>
 
 	<authentication-manager>

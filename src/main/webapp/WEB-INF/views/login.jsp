@@ -1,4 +1,5 @@
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
 <title>Login Page</title>
@@ -13,7 +14,8 @@
 		</div>
 	</c:if>
 
-	<form action="${pageContext.request.contextPath}/login" method="post">
+	<form:form action="${pageContext.request.contextPath}/login"
+		method="post">
 		<table frame="box" cellpadding="0" cellspacing="6">
 			<tr>
 				<td>Username:</td>
@@ -28,6 +30,6 @@
 					value="Submit"></td>
 			</tr>
 		</table>
-	</form>
+	</form:form>
 </body>
 </html>
